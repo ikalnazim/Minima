@@ -5,26 +5,34 @@
    Recommended Ubuntu 20.04
 
 ### Open Port
+   ```shell
    ufw allow 22 && ufw allow 8080/tcp &&
    ufw allow 9001 && ufw allow 9002 && ufw
    allow 9003 && ufw allow 9004 && ufw
    allow 9005
    ufw enable
+   ```
 
 ### Install Docker
+   ```shell
    sudo curl -fsSL https://get.docker.com/ -o get-docker.sh sudo chmod +x 
 ./get-docker.sh && ./get-docker.sh
+   ```
 
 ### Run Docker
+   ```shell
    docker run -d -e minima_mdspassword=123 -e minima_server=true -v 
    ~/minimadocker9001:/home/minima/data -p 9001-9004:9001-9004 --restart 
    unless-stopped --name minima9001 minimaglobal/minima:latest
+   ```
 
   Note : 123 Ganti menjadi password kalian (bebas)
 
 ### Run Service
+   ```shell
    sudo systemctl enable docker.service
    sudo systemctl enable containerd.service
+   ```
 
 ### Buka IP VPS Anda di Browser
    https://YourServerIP:9003/
